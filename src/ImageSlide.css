@@ -1,0 +1,21 @@
+.image-slide{
+height: 400px;
+width: 400px;
+margin: 4%;
+border: 5px solid gray;
+background-position: center;
+background-size: cover;
+position: relative;
+top:-70px;
+}
+
+.thumbnails .thumbnail-img{
+height: 80px;
+width: 80px;
+border: 2px solid gray;
+background-size: cover;
+position: relative;
+top:-70px;
+right: -10px;
+background-position: center;
+}
