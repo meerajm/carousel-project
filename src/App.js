@@ -1,24 +1,95 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, useRef } from "react";
+import "./App.css";
+import "./modal.css";
+import Modal from "./Modal";
 
 function App() {
+  const [photos, setPhotos] = useState([]);
+  const [photosName, setPhotosName] = useState("");
+  const [showModal, setShowModal] = useState(false);
+  const [currentPhotoIndex, setCurrentPhotoIndex] = useState(0);
+  const [loading,setLoading]=useState(false);
+  
+  function getUrl(photosName) {
+    if(!photosName){
+  document.getElementById("error").innerHTML="Please enter a search text.";
+    }
+    else{
+      document.getElementById("error").style.visibility="hidden";
+      setLoading(true);
+    fetch(
+      "https://api.unsplash.com/search/photos/?client_id=O0PF3NorhgM3gfxgBhUTW0dHb0uqSZgi9h8XpoAt_2Q&per_page=5&extras=url_regular&query=" +
+        photosName +
+        "&format=json&nojsoncallback=1"
+    ).then((res) =>
+      res.json().then((data) => {
+        console.log("data", data);
+        var photoArray = data.results.map((pic) => {
+          console.log(pic.urls.regular);
+          return pic.urls.regular;
+        });
+        setTimeout(()=>{
+          setLoading(false)},2000);
+        setPhotos(photoArray);
+      })
+    );
+  }
+  }
+  
+  function handlePhotoClick(i) {
+    setCurrentPhotoIndex(i);
+    setShowModal(true);
+  }
+
+  var allPhotos = photos.map((photo, i) => {
+    return (
+      <section key={i}>
+        <img
+          onClick={() => handlePhotoClick(i)}
+          src={photo}
+          alt="No photo available."
+        />
+      </section>
+    );
+  });
+
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <form onSubmit={(e) => e.preventDefault()}>
+          <input
+            className="text-style"
+            type="text"
+            placeholder="Search for photos"
+            value={photosName}
+            onBlur={(e) => setPhotosName(e.target.value)}
+            onChange={(e) => setPhotosName(e.target.value)}
+          />
+          <button
+            onClick={() => {
+              getUrl(photosName);              
+            }}
+          >
+            Search
+          </button>
+          <label className="error-style" id="error"></label>
+        </form>
       </header>
+      {loading?<div className="loading"><p>Loading...</p></div>:
+      <div className="carousel">
+      {showModal && (
+        <Modal
+          photoUrls={photos}
+          currentPhotoIndex={currentPhotoIndex}
+          setCurrentPhotoIndex={setCurrentPhotoIndex}
+          setShowModal={setShowModal}
+          showModal={showModal}
+        />
+      )}
+      {allPhotos}
+    </div>
+      }
+      
     </div>
   );
 }
