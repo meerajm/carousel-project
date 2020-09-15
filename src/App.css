@@ -1,4 +1,50 @@
-.search-style{
-  padding: 200px 0;
+.App{
+  background-color:coral;
+  padding: 1rem;
+}
+
+
+.App header {
+  display: flex;
+  flex-direction: row;  
+}
+
+button{
+  background-color:brown;
+  border:2px solid black;
+  color: white;
+  padding: 15px 15px;
   text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
+
+.text-style{
+  border: 2px solid black;
+}
+
+.carousel {
+  width: 90vw;
+  margin: 0 auto;
+  padding: 2em;
+  display: flex;
+  column-gap: 10px;
+}
+.carousel section img {
+  height: 200px;
+  width: 200px;
+  border: 5px solid black;
+  border-radius: 4px; 
+}
+
+.error-style {
+  color: red;
+  font-style: italic;
+  font-weight: bold;
+}
+div .loading{
+  color: white;
+  font-style: italic;
+  font-weight: bold;
 }
