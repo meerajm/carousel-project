@@ -59,6 +59,7 @@ function Modal(props) {
                 <ImageSlide
                   url={photoUrls[currentPhotoIndex]}
                   photos={photoUrls}
+                  setCurrentPhotoIndex={setCurrentPhotoIndex}
                 />
               </section>
               <a
