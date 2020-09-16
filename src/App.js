@@ -2,6 +2,7 @@ import React, { useState, useRef } from "react";
 import "./App.css";
 import "./modal.css";
 import Modal from "./Modal";
+import { Link } from "@reach/router";
 
 function App() {
   const [photos, setPhotos] = useState([]);
@@ -55,7 +56,13 @@ function App() {
 
   return (
     <div className="App">
+      <nav>
+          <Link to="/" onClick={() => window.location.reload()}>
+            <span style={{ color: "brown", fontWeight:"bold",fontFamily:"-moz-initial",fontSize:"30px"}}>PhotoSearch</span>
+          </Link>
+        </nav>
       <header className="App-header">
+      
         <form onSubmit={(e) => e.preventDefault()}>
           <input
             className="text-style"
