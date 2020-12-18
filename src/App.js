@@ -11,7 +11,8 @@ function App() {
   const [currentPhotoIndex, setCurrentPhotoIndex] = useState(0);
   const [loading, setLoading] = useState(false);
   const [isPhotoAvailable, setIsPhotoAvailable] = useState(true);
-
+  const client_id = process.env.REACT_APP_UNSPLASH_CLIENT_ID;
+  console.log(client_id);
   function getUrl(photosName) {
     if (!photosName) {
       document.getElementById("error").innerHTML =
@@ -20,7 +21,7 @@ function App() {
       document.getElementById("error").style.visibility = "hidden";
       setLoading(true);
       fetch(
-        `https://api.unsplash.com/search/photos/?client_id=${process.env.REACT_APP_UNSPLASH_CLIENT_ID}&per_page=5&extras=url_regular&query=` +
+        `https://api.unsplash.com/search/photos/?client_id=${client_id}&per_page=5&extras=url_regular&query=` +
           photosName +
           "&format=json&nojsoncallback=1"
       ).then((res) =>
