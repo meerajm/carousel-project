@@ -62,22 +62,22 @@ function Modal(props) {
                   setCurrentPhotoIndex={setCurrentPhotoIndex}
                 />
               </section>
-              <a
+              <button
                 className="prev"
                 onClick={() => {
                   previousSlide();
                 }}
               >
                 ❮
-              </a>
-              <a
+              </button>
+              <button
                 className="next"
                 onClick={() => {
                   nextSlide();
                 }}
               >
                 ❯
-              </a>
+              </button>
             </div>
           </div>
         </div>
