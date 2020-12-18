@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState } from "react";
 import "./App.css";
 import "./modal.css";
 import Modal from "./Modal";
@@ -51,7 +51,7 @@ function App() {
         <img
           onClick={() => handlePhotoClick(i)}
           src={photo}
-          alt="No photo available."
+          alt="No preview available."
         />
       </section>
     );

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import "./ImageSlide.css";
 
 const ImageSlide = (props) => {
@@ -20,7 +20,7 @@ const ImageSlide = (props) => {
         className="thumbnail-img"
         onClick={() => handlePhotoClick(i)}
         src={photo}
-        alt="No photo available."
+        alt="No preview available."
       />
     );
   });
