@@ -12,7 +12,6 @@ function App() {
   const [loading, setLoading] = useState(false);
   const [isPhotoAvailable, setIsPhotoAvailable] = useState(true);
   const client_id = process.env.REACT_APP_UNSPLASH_CLIENT_ID;
-  console.log(client_id);
   function getUrl(photosName) {
     if (!photosName) {
       document.getElementById("error").innerHTML =
@@ -26,9 +25,7 @@ function App() {
           "&format=json&nojsoncallback=1"
       ).then((res) =>
         res.json().then((data) => {
-          console.log("data", data);
           var photoArray = data.results.map((pic) => {
-            console.log(pic.urls.regular);
             return pic.urls.regular;
           });
           setTimeout(() => {
