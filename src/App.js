@@ -20,7 +20,7 @@ function App() {
       document.getElementById("error").style.visibility = "hidden";
       setLoading(true);
       fetch(
-        "https://api.unsplash.com/search/photos/?client_id=O0PF3NorhgM3gfxgBhUTW0dHb0uqSZgi9h8XpoAt_2Q&per_page=5&extras=url_regular&query=" +
+        `https://api.unsplash.com/search/photos/?client_id=${process.env.REACT_APP_UNSPLASH_CLIENT_ID}&per_page=5&extras=url_regular&query=` +
           photosName +
           "&format=json&nojsoncallback=1"
       ).then((res) =>
